@@ -5,7 +5,7 @@ Text Formatted Snapshot of Accessibility Experience
 ## Usage 
 
 Accessibility User Experience is the sweetest spot for unit testing. 
-And AXSnapshot makes it super easy to test just that.
+AXSnapshot makes it super easy to test just that.
 
 ```swift
 func testMyViewController() throws {
