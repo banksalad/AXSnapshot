@@ -1,4 +1,4 @@
-# AXSnapshot [![.github/workflows/test.yml](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml)
+# AXSnapshot [![.github/workflows/test.yml](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml) 
 
 Text Formatted Snapshot of Accessibility Experience 
 
@@ -145,6 +145,52 @@ It's hard to expect all of your testers, co-workers are familar with VoiceOver.
 It's even harder to expect your successor of the project is familar with accessibility.
 
 So, to ensure there's no regression in accessibility for enough period of time, it is very important to test it automatically. 
+
+## How it Works 
+
+An `UIView` can be exposed to AssitiveTechnology when it is the first [accessibilityElement](https://developer.apple.com/documentation/objectivec/nsobject/1615141-isaccessibilityelement) in whole [responder-chain](https://www.google.com/search?client=safari&rls=en&q=responder+chain&ie=UTF-8&oe=UTF-8)
+
+![Diagram of UIView hierarchy](https://user-images.githubusercontent.com/4796743/158020789-42fd6873-258c-47cb-9929-9b3cd0fc12d6.png)
+
+So, with this requirement, we can build `isExposedToAssistiveTech` logic like this 
+
+```swift 
+extension UIResponder {
+    var isExposedToAssistiveTech: Bool {
+        if isAccessibilityElement {
+            if allResponderChain.contains(where: { $0.isExposedToAssistiveTech }) == true {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+}
+```
+
+That's the gist of it! 
+
+The rest is just traversing all the UIView tree, and filtering views that are `exposedToAssistiveTech`, and formatting it's informations for assistiveTechnology such as [accessibilityLabel](https://www.google.com/search?client=safari&rls=en&q=accesbilitylabel&ie=UTF-8&oe=UTF-8)
+
+```swift
+public extension UIView {
+    /// Generate text-formatted snapshot of accessibility experience
+    func axSnapshot() -> String {
+        let exposedAccessibleViews = allSubViews().filter { $0.isExposedToAssistiveTech } 
+        let descriptions = exposedAccessibleViews.map { element in
+            // Do some formatting on each element
+            element.accessibilityDescription
+        }
+        // Do some formatting on whole `descriptions`
+        return description
+    }
+```
+
+The default formatting behavior for each item is declared in [generateAccessibilityDescription](https://github.com/e-sung/AXSnapshot/blob/main/Sources/AXSnapshot/AccessibilityDescription.swift) closure. To customize formatting behavior, you can replace this closure anyway you want! 
+
+
 
 
 ## License
