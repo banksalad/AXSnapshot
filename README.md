@@ -1,6 +1,6 @@
 # AXSnapshot [![.github/workflows/test.yml](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml) 
 
-Text Formatted Snapshot of Accessibility Experience Testing
+Text Formatted Snapshot for Accessibility Experience Testing
 
 ## Usage 
 
