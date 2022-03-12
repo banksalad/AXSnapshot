@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'AXSnapshot'
   s.version          = '1.0.0'
-  s.summary          = 'Text Formatted Snapshot of Accessibility Experience'
+  s.summary          = 'Text Formatted Snapshot for Accessibility Experience Testing'
   s.swift_versions   = '5.0.0'
 
   s.description      = <<-DESC
