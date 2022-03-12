@@ -56,7 +56,7 @@ dependencies: [
 ]
 ```
 
-Next, add SnapshotTesting as a dependency of your test target:
+Next, add AXSnapshot as a dependency of your test target:
 
 ```swift
 targets: [
