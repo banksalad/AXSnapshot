@@ -106,6 +106,36 @@ It's even harder to expect your successor of the project is familar with accessi
 
 So, to ensure there's no regression in accessibility for enough period of time, it is very important to test it automatically. 
 
+## Installation 
+
+### SwiftPackageManager
+
+If you want to use AXSnapshot in any other project that uses SwiftPM, add the package as a dependency in Package.swift:
+
+```swift
+dependencies: [
+  .package(
+    url: "https://github.com/e-sung/AXSnapshot.git",
+    from: "1.0.0"
+  ),
+]
+```
+
+Next, add SnapshotTesting as a dependency of your test target:
+
+```swift
+targets: [
+  .target(name: "MyApp"),
+  .testTarget(
+    name: "MyAppTests",
+    dependencies: [
+      "MyApp",
+      .product(name: "AXSnapshot", package: "AXSnapshot"),
+    ]
+  )
+]
+```
+
 
 ## License
 
