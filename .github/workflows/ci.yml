@@ -1,0 +1,16 @@
+on: 
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Test
+      run: |
+        swift package generate-xcodeproj 
+        xcodebuild test -scheme AXSnapshot-Package -sdk iphonesimulator15.0 -destination "OS=15.0,name=iPhone 13 Mini"
