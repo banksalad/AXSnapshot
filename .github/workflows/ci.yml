@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  release:
+  Test:
     runs-on: macos-latest
     steps:
     - name: checkout
