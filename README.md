@@ -2,6 +2,8 @@
 
 Text Formatted Snapshot for Accessibility Experience Testing
 
+> Language Switch: [한국어](https://github.com/e-sung/AXSnapshot/blob/main/README_KR.md).
+
 ## Usage 
 
 Accessibility User Experience is the [sweet spot](#why) for unit testing. 
