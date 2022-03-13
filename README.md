@@ -1,4 +1,4 @@
-# AXSnapshot [![.github/workflows/test.yml](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml) 
+# AXSnapshot [![.github/workflows/test.yml](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/e-sung/AXSnapshot/actions/workflows/test.yml) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fe-sung%2FAXSnapshot%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/e-sung/AXSnapshot) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fe-sung%2FAXSnapshot%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/e-sung/AXSnapshot)
 
 Text Formatted Snapshot for Accessibility Experience Testing
 
