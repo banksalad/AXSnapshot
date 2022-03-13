@@ -4,7 +4,7 @@ Text Formatted Snapshot for Accessibility Experience Testing
 
 ## Usage 
 
-접근성 사용자 경험만큼, 유닛테스트를 하기 적절한 부분도 없습니다. 
+접근성 사용자 경험만큼, [유닛테스트를 하기 적절](#why)한 부분도 없습니다. 
 그리고 `AXSnapshot`은, 그것을 아주 쉽게 만들어줍니다. 
 
 ```swift
@@ -85,8 +85,8 @@ class MyViewController {
 }
 ```
 
-이 ViewController에 우리가 원하는 정보가 기대한 형태대로 잘 표시되고 있는지를 어떻게 확인 하고 싶을 수 있습니다.
-하지만 그런 로직은 다음과 같은 테스트로는 검증 할 수 _**없습니다**__. 
+이 ViewController에 우리가 원하는 정보가 기대한 형태대로 잘 표시되고 있는지를 확인 하고 싶을 수 있습니다.
+하지만 그런 로직은 다음과 같은 테스트로는 검증 할 수 **없습니다**. 
 
 ```swift
 func testMyViewController() async throws {
@@ -96,8 +96,8 @@ func testMyViewController() async throws {
     
     await viewModel.doSomeBusinessLogic()
     
-    // `headerView` 가 `private`니까 테스트코드에서 접근 할 수 없습니다. 
-    // 이 것을 테스트하려면, 은닉성의 일부를 포기해야만 합니다. 
+    // `headerView` 가 `private`여서 테스트코드에서 접근 할 수 없습니다. 
+    // 이것을 테스트하려면, 은닉성의 일부를 포기해야만 합니다. 
     XCTAssert(viewController.headerView.headerText == "Final Result")
 }
 ```
@@ -143,7 +143,7 @@ https://user-images.githubusercontent.com/4796743/158012249-9d3d70cb-8f1d-4532-9
 당신이 존중받을 인간인 딱 그 만큼, 장애를 가진 어떤 누구도 딱 그 만큼 존중받아야 하기 때문입니다.   
 
 하지만 현실적으로, 접근성 지원 여부는 수동 테스트에서 누락되기 가장 쉬운 것들 중 하나입니다.
-당신의 모든 테스터들이, 동료들이 VoiceOver를 익숙하게 다룰 수 있을거라고 기대하기는 어렵습니다.
+당신의 모든 동료들이 VoiceOver를 익숙하게 다룰 수 있을거라고 기대하기는 어렵습니다.
 당신의 후임자가 접근성에 대해 잘 이해하고 있을 거라고 기대하기는 더욱 어렵습니다.
 
 그렇기 때문에, 충분한 시간동안 접근성에 관한 문제가 회귀하지 않을 수 있도록 보장하기 위해서는, 자동화된 테스트가 필수적입니다.  
