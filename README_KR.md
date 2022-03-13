@@ -172,7 +172,7 @@ extension UIResponder {
 }
 ```
 
-이게 핵십입니다!
+이게 핵심입니다!
 
 나머지는 모든 UIView 트리를 순환하면서, AT에 노출된 UIView들을 필터링하고, [accessibilityLabel](https://www.google.com/search?client=safari&rls=en&q=accesbilitylabel&ie=UTF-8&oe=UTF-8)과 같이 각 UIView들이 AT에 노출하는 정보를 적절히 포매팅 하는 일 뿐입니다.
 
