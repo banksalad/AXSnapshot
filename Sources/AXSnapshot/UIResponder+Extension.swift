@@ -11,7 +11,7 @@ import UIKit
 extension UIResponder {
     var isExposedToAssistiveTech: Bool {
         if isAccessibilityElement {
-            if allResponderChain.contains(where: { $0.isExposedToAssistiveTech }) == true {
+            if allItemsInResponderChain.contains(where: { $0.isExposedToAssistiveTech }) == true {
                 return false
             } else {
                 return true
@@ -21,7 +21,7 @@ extension UIResponder {
         }
     }
 
-    var allResponderChain: [UIResponder] {
+    var allItemsInResponderChain: [UIResponder] {
         var chain = [UIResponder]()
         var nextResponder = next
         while nextResponder != nil {
