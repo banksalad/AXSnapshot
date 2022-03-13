@@ -4,7 +4,7 @@ Text Formatted Snapshot for Accessibility Experience Testing
 
 ## Usage 
 
-Accessibility User Experience is the sweet spot for unit testing. 
+Accessibility User Experience is the [sweet spot](#why) for unit testing. 
 `AXSnapshot` makes it super easy to do just that.
 
 ```swift
