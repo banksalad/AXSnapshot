@@ -101,7 +101,7 @@ func testMyViewController() async throws {
     XCTAssert(viewController.headerView.headerText == "Final Result")
 }
 ```
-왜냐하면 테스트 코드에서는 ViewController의 속성 대부분에 접근 할 수 없기 떄문입니다. `@testable import` 를 사용하더라도 말이죠. 
+왜냐하면 테스트 코드에서는 ViewController의 속성 대부분에 접근 할 수 없기 때문입니다. `@testable import` 를 사용하더라도 말이죠. 
 
 심지어 은닉성의 일부를 포기하고, 접근제한자를 `private`에서 `internal`로 바꾼다고 해도, 많은 문제가 남습니다. 
 예컨대, 해당 ViewController에 대해 간단한 리팩토링을 하면서 변수 이름만 수정한다고 해봅시다. 
