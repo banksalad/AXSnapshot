@@ -200,7 +200,7 @@ The default formatting behavior for each item is declared in [generateAccessibil
 ```
 MIT License
 
-Copyright (c) 2022 SungdooYoo
+Copyright (c) 2022 Banksalad Co., Ltd.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
