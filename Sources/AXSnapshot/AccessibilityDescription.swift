@@ -17,8 +17,8 @@ public var generateAccessibilityDescription: (NSObject) -> String = { object in
     let accessibilityValueDescription = generateAccessibilityValueDescription(object)
     if accessibilityValueDescription.count > 0, description.count > 0 {
         description += ", "
-        description += accessibilityValueDescription
     }
+    description += accessibilityValueDescription
 
     description += generateAccessibilityTraitDescription(object)
     description += generateAccessibilityHintDescription(object)
