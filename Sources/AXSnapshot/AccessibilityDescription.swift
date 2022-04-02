@@ -27,7 +27,7 @@ public var generateAccessibilityDescription: (NSObject) -> String = { object in
     return description
 }
 
-var generateAccessbilityLabelDescription: (NSObject) -> String = { object in
+public var generateAccessbilityLabelDescription: (NSObject) -> String = { object in
     var description = ""
     if let label = object.accessibilityLabel, label.count > 0 {
         description = label
@@ -36,7 +36,7 @@ var generateAccessbilityLabelDescription: (NSObject) -> String = { object in
     return description
 }
 
-var generateAccessibilityValueDescription: (NSObject) -> String = { object in
+public var generateAccessibilityValueDescription: (NSObject) -> String = { object in
     var description = ""
     if let value = object.accessibilityValue, value.count > 0 {
         description = value
@@ -44,7 +44,7 @@ var generateAccessibilityValueDescription: (NSObject) -> String = { object in
     return description
 }
 
-var generateAccessibilityTraitDescription: (NSObject) -> String = { object in
+public var generateAccessibilityTraitDescription: (NSObject) -> String = { object in
     var description = ""
     if object.accessibilityTraits.isEmpty == false {
         description = "\n\(object.accessibilityTraits.descripion)"
@@ -52,7 +52,7 @@ var generateAccessibilityTraitDescription: (NSObject) -> String = { object in
     return description
 }
 
-var generateAccessibilityHintDescription: (NSObject) -> String = { object in
+public var generateAccessibilityHintDescription: (NSObject) -> String = { object in
     var description = ""
     if let hint = object.accessibilityHint {
         description = "\n\(hint)"
@@ -60,7 +60,7 @@ var generateAccessibilityHintDescription: (NSObject) -> String = { object in
     return description
 }
 
-var generateAccessibilityCustomActionsDescription: (NSObject) -> String = { object in
+public var generateAccessibilityCustomActionsDescription: (NSObject) -> String = { object in
     var description = ""
     if let actions = object.accessibilityCustomActions {
         description += "\n"
