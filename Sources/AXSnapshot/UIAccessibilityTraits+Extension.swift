@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  UIAccessibilityTraits+Extension.swift
+//
 //
 //  Created by Sungdoo on 2022/03/12.
 //
@@ -12,31 +12,31 @@ extension UIAccessibilityTraits {
     var descripion: String {
         var traits: [String] = []
 
-        if self.contains(.button) {
+        if contains(.button) {
             traits.append("button")
         }
 
-        if self.contains(.link) {
+        if contains(.link) {
             traits.append("link")
         }
 
-        if self.contains(.image) {
+        if contains(.image) {
             traits.append("image")
         }
 
-        if self.contains(.searchField) {
+        if contains(.searchField) {
             traits.append("searchField")
         }
 
-        if self.contains(.keyboardKey) {
+        if contains(.keyboardKey) {
             traits.append("keyboardKey")
         }
 
-        if self.contains(.staticText) {
+        if contains(.staticText) {
             traits.append("staticText")
         }
 
-        if self.contains(.header) {
+        if contains(.header) {
             traits.append("header")
         }
 
@@ -46,40 +46,50 @@ extension UIAccessibilityTraits {
             }
         }
 
-        if self.contains(.summaryElement) {
+        if contains(.summaryElement) {
             traits.append("summaryElement")
         }
 
-        if self.contains(.selected) {
+        if contains(.selected) {
             traits.append("selected")
         }
 
-        if self.contains(.notEnabled) {
+        if contains(.notEnabled) {
             traits.append("notEnabled")
         }
 
-        if self.contains(.adjustable) {
+        if contains(.adjustable) {
             traits.append("adjustable")
         }
 
-        if self.contains(.allowsDirectInteraction) {
+        if contains(.allowsDirectInteraction) {
             traits.append("allowsDirectInteraction")
         }
 
-        if self.contains(.updatesFrequently) {
+        if contains(.updatesFrequently) {
             traits.append("updatesFrequently")
         }
 
-        if self.contains(.causesPageTurn) {
+        if contains(.causesPageTurn) {
             traits.append("causesPageTurn")
         }
 
-        if self.contains(.playsSound) {
+        if contains(.playsSound) {
             traits.append("playsSound")
         }
 
-        if self.contains(.startsMediaSession) {
+        if contains(.startsMediaSession) {
             traits.append("startsMediaSession")
+        }
+
+        // accessibilityTraits of UITextView and UITextFields are not declared as constant.
+        // - Date: 2022.04.02
+        if rawValue == 262_144 {
+            traits.append("text field")
+        }
+
+        if rawValue == 140_737_488_617_472 {
+            traits.append("text view")
         }
 
         return traits.joined(separator: ", ")
