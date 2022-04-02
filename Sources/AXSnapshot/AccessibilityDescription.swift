@@ -1,6 +1,6 @@
 //
 //  AccessibilityDescription.swift
-//  
+//
 //
 //  Created by Sungdoo on 2022/03/12.
 //
@@ -12,35 +12,61 @@ import UIKit
 ///
 /// Replace this closure to generate your custom snapshot format
 public var generateAccessibilityDescription: (NSObject) -> String = { object in
+    var description = generateAccessbilityLabelDescription(object)
+
+    let accessibilityValueDescription = generateAccessibilityValueDescription(object)
+    if accessibilityValueDescription.count > 0, description.count > 0 {
+        description += ", "
+        description += accessibilityValueDescription
+    }
+
+    description += generateAccessibilityTraitDescription(object)
+    description += generateAccessibilityHintDescription(object)
+    description += generateAccessibilityCustomActionsDescription(object)
+
+    return description
+}
+
+var generateAccessbilityLabelDescription: (NSObject) -> String = { object in
     var description = ""
-    
     if let label = object.accessibilityLabel, label.count > 0 {
-        description += label
+        description = label
     }
-    
+
+    return description
+}
+
+var generateAccessibilityValueDescription: (NSObject) -> String = { object in
+    var description = ""
     if let value = object.accessibilityValue, value.count > 0 {
-        if description.count > 0 {
-            description += ", "
-        }
-        description += value
+        description = value
     }
+    return description
+}
 
+var generateAccessibilityTraitDescription: (NSObject) -> String = { object in
+    var description = ""
     if object.accessibilityTraits.isEmpty == false {
-        description += "\n"
-        description += object.accessibilityTraits.descripion
+        description = "\n\(object.accessibilityTraits.descripion)"
     }
+    return description
+}
 
+var generateAccessibilityHintDescription: (NSObject) -> String = { object in
+    var description = ""
     if let hint = object.accessibilityHint {
-        description += "\n"
-        description += hint
+        description = "\n\(hint)"
     }
+    return description
+}
 
+var generateAccessibilityCustomActionsDescription: (NSObject) -> String = { object in
+    var description = ""
     if let actions = object.accessibilityCustomActions {
         description += "\n"
         description += "Actions: "
         description += actions.map { $0.name }.joined(separator: ", ")
     }
-
     return description
 }
 
