@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: GitHub Action for SwiftLint
-        run: .github/runSwiftLint.sh
+        run: bash .github/runSwiftLint.sh
   Format:
     runs-on: macos-latest
     steps:
