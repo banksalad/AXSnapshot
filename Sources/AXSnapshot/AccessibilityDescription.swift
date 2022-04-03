@@ -71,7 +71,8 @@ public var generateAccessibilityValueDescription: (NSObject) -> String = { objec
         description = uiSwitch.isOn ? "1" : "0"
     } else if let segmentedControl = object as? UISegmentedControl {
         if segmentedControl.selectedSegmentIndex >= 0 {
-            description = "Selected: \(segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex) ?? "")"
+            let selectedSegmentTitle = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex) ?? ""
+            description = "Selected: \(selectedSegmentTitle)"
         } else {
             description = "Selected: None"
         }

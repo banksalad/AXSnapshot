@@ -1,0 +1,15 @@
+excluded:
+  - Tests
+
+identifier_name:
+  min_length: 0
+  max_length: 100
+  validates_start_with_lowercase: false
+
+function_body_length:
+  warning: 300
+  error: 500
+
+type_body_length:
+  warning: 300
+  error: 500
