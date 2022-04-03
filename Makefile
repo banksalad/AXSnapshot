@@ -2,7 +2,7 @@ format:
 	binary/swiftformat .
 
 lint:
-	binary/swiftlint .
+	binary/swiftlint
 
 ready:
 	make format && make lint
