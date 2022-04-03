@@ -1,3 +1,4 @@
+.PHONY: format lint ready
 format:
 	binary/swiftformat .
 
