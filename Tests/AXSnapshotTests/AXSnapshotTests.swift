@@ -115,6 +115,12 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
 
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.startAnimating()
+        
+        let textField = UITextField()
+        textField.text = "My TextField Content"
+        
+        let textView = UITextView()
+        textView.text = "My TextView Content"
 
         containerView.addSubview(label)
         containerView.addSubview(button)
@@ -124,6 +130,8 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
         containerView.addSubview(progressView)
         containerView.addSubview(slider)
         containerView.addSubview(activityIndicator)
+        containerView.addSubview(textField)
+        containerView.addSubview(textView)
 
         // When
         let axSnapshot = containerView.axSnapshot()
@@ -150,6 +158,12 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
             adjustable
             ------------------------------------------------------------
             Activity Indicator, Animating
+            ------------------------------------------------------------
+            My TextField Content
+            TextField
+            ------------------------------------------------------------
+            My TextView Content
+            TextView
             ------------------------------------------------------------
             """
         )
