@@ -1,3 +1,5 @@
+disabled_rules:
+  - trailing_comma
 excluded:
   - Tests
 
