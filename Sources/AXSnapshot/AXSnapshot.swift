@@ -22,12 +22,15 @@ public extension UIView {
     func exposedAccessibleViews() -> [UIView] {
         var allCandidate = allSubviews
         allCandidate.insert(self, at: 0)
+        let str = "1"
+        let num = str as! Int
+        print(num)
         return allCandidate.filter { $0.isExposedToAssistiveTech }
     }
 }
 
 public extension UIViewController {
-    ///  Generate text-formatted snapshot of accessibility experience
+    ///   Generate text-formatted snapshot of accessibility experience
     func axSnapshot() -> String {
         view.axSnapshot()
     }

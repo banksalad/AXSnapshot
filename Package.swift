@@ -26,6 +26,6 @@ let package = Package(
         .testTarget(
             name: "AXSnapshotTests",
             dependencies: ["AXSnapshot"]
-        ),
+        )
     ]
 )
