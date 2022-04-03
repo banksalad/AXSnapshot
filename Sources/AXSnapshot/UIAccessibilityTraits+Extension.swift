@@ -10,6 +10,8 @@ import UIKit
 
 extension UIAccessibilityTraits {
     var descripion: String {
+        guard isStandardTraits else { return "" }
+
         var traits: [String] = []
 
         if contains(.button) {
@@ -82,16 +84,33 @@ extension UIAccessibilityTraits {
             traits.append("startsMediaSession")
         }
 
-        // accessibilityTraits of UITextView and UITextFields are not declared as constant.
-        // - Date: 2022.04.02
-        if rawValue == 262_144 {
-            traits.append("text field")
-        }
-
-        if rawValue == 140_737_488_617_472 {
-            traits.append("text view")
-        }
-
         return traits.joined(separator: ", ")
+    }
+
+    var isStandardTraits: Bool {
+        var standardAccessibilityTraits = UIAccessibilityTraits(arrayLiteral: [
+            .adjustable,
+            .allowsDirectInteraction,
+            .button,
+            .causesPageTurn,
+            .header,
+            .image,
+            .keyboardKey,
+            .link,
+            .none,
+            .notEnabled,
+            .playsSound,
+            .selected,
+            .staticText,
+            .searchField,
+            .summaryElement,
+            .startsMediaSession,
+            .updatesFrequently,
+        ])
+
+        if #available(iOS 10, *) {
+            standardAccessibilityTraits.insert(.tabBar)
+        }
+        return isStrictSubset(of: standardAccessibilityTraits)
     }
 }
