@@ -27,7 +27,7 @@ public extension UIView {
 }
 
 public extension UIViewController {
-    /// Generate text-formatted snapshot of accessibility experience
+    ///  Generate text-formatted snapshot of accessibility experience
     func axSnapshot() -> String {
         view.axSnapshot()
     }
