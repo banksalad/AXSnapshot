@@ -1,9 +1,8 @@
-.PHONY: format lint ready
 format:
-	binary/swiftformat .
+	@binary/swiftformat .
 
 lint:
-	binary/swiftlint
+	@binary/swiftlint
 
 ready:
-	make format && make lint
+	@make format && make lint
