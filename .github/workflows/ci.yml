@@ -15,7 +15,7 @@ jobs:
         swift package generate-xcodeproj
         xcodebuild test -scheme AXSnapshot-Package -sdk iphonesimulator -destination "OS=15.0,name=iPhone 13 Mini"
   Lint:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
       - name: GitHub Action for SwiftLint
