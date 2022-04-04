@@ -1,13 +1,8 @@
-# AXSnapshot [![.github/workflows/test.yml](https://github.com/banksalad/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/banksalad/AXSnapshot/actions/workflows/test.yml) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbanksalad%2FAXSnapshot%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/banksalad/AXSnapshot) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbanksalad%2FAXSnapshot%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/banksalad/AXSnapshot)
+# AXSnapshot [![.github/workflows/test.yml](https://github.com/banksalad/AXSnapshot/actions/workflows/test.yml/badge.svg)](https://github.com/banksalad/AXSnapshot/actions/workflows/test.yml) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbanksalad%2FAXSnapshot%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/banksalad/AXSnapshot) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbanksalad%2FAXSnapshot%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/banksalad/AXSnapshot) [![](https://badgen.net/badge/iOS/9.0+?label%3F=iOS&icon=apple)]
 
 Text Formatted Snapshot for Accessibility Experience Testing
 
 > Language Switch: [한국어](https://github.com/banksalad/AXSnapshot/blob/main/README_KR.md).
-
-## Requirements
-
-- iOS 9.0+ 
-- Swift 5.0
 
 ## Usage 
 
