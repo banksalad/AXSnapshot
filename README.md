@@ -4,6 +4,11 @@ Text Formatted Snapshot for Accessibility Experience Testing
 
 > Language Switch: [한국어](https://github.com/e-sung/AXSnapshot/blob/main/README_KR.md).
 
+## Requirements
+
+- iOS 9.0+ 
+- Swift 5.0
+
 ## Usage 
 
 Accessibility User Experience is the [sweet spot](#why) for unit testing. 
