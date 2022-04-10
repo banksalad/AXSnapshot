@@ -85,6 +85,119 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
             "If Parent View is an accessibilityElement, child cannot be exposed to end user"
         )
     }
+
+    func testStandardUIKitControls() throws {
+        // Given
+        let containerView = UIView()
+        containerView.isAccessibilityElement = false
+
+        let label = UILabel()
+        label.text = "My Label"
+
+        let button = UIButton()
+        button.setTitle("My Button", for: .normal)
+
+        let uiSwitch = UISwitch()
+        uiSwitch.setOn(true, animated: false)
+
+        let segmentedControl = UISegmentedControl(items: ["First", "Second"])
+        segmentedControl.selectedSegmentIndex = 0
+
+        let stepper = UIStepper()
+
+        let progressView = UIProgressView()
+        progressView.progress = 0.7
+
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.value = 80
+
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.startAnimating()
+        
+        let textField = UITextField()
+        textField.text = "My TextField Content"
+        
+        let textView = UITextView()
+        textView.text = "My TextView Content"
+
+        containerView.addSubview(label)
+        containerView.addSubview(button)
+        containerView.addSubview(uiSwitch)
+        containerView.addSubview(segmentedControl)
+        containerView.addSubview(stepper)
+        containerView.addSubview(progressView)
+        containerView.addSubview(slider)
+        containerView.addSubview(activityIndicator)
+        containerView.addSubview(textField)
+        containerView.addSubview(textView)
+
+        // When
+        let axSnapshot = containerView.axSnapshot()
+
+        // Then
+        XCTAssert(
+            axSnapshot == """
+            ------------------------------------------------------------
+            My Label
+            ------------------------------------------------------------
+            My Button
+            button
+            ------------------------------------------------------------
+            1
+            button
+            ------------------------------------------------------------
+            SegmentedControl with 2 segments, Selected: First
+            ------------------------------------------------------------
+            Stepper
+            ------------------------------------------------------------
+            70%
+            ------------------------------------------------------------
+            Absolute: 80.0, Percentage: 80%
+            adjustable
+            ------------------------------------------------------------
+            Activity Indicator, Animating
+            ------------------------------------------------------------
+            My TextField Content
+            TextField
+            ------------------------------------------------------------
+            My TextView Content
+            TextView
+            ------------------------------------------------------------
+            """
+        )
+    }
+
+    func testHiddenUIKitControls() {
+        // Given
+        let containerView = UIView()
+        containerView.isAccessibilityElement = false
+
+        let label = UILabel()
+        label.text = "My Label"
+        label.isHidden = true
+
+        let button = UIButton()
+        button.setTitle("My Button", for: .normal)
+
+        containerView.addSubview(label)
+        containerView.addSubview(button)
+
+        // When
+        let axSnapshot = containerView.axSnapshot()
+
+        // Then
+        XCTAssert(
+            axSnapshot == """
+            ------------------------------------------------------------
+            My Button
+            button
+            ------------------------------------------------------------
+            """,
+            "Hidden element should not be exposed to axSnapshot"
+        )
+    }
 }
 
 class ListItemView: UIView {
