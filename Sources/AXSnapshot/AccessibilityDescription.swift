@@ -81,12 +81,16 @@ public var generateAccessibilityValueDescription: (NSObject) -> String = { objec
 
 public var generateAccessibilityTraitDescription: (NSObject) -> String = { object in
     var description = ""
-    if object.accessibilityTraits.isEmpty == false {
+    if object.accessibilityTraits.isEmpty == false && object.accessibilityTraits.isStandardTraits {
         description = "\n\(object.accessibilityTraits.descripion)"
     } else if object is UIButton || object is UISwitch {
         description = "\n\(UIAccessibilityTraits.button.descripion)"
     } else if object is UISlider {
         description = "\n\(UIAccessibilityTraits.adjustable.descripion)"
+    } else if object is UITextView {
+        description = "\nTextView"
+    } else if object is UITextField {
+        description = "\nTextField"
     }
     return description
 }
