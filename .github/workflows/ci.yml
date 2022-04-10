@@ -14,3 +14,22 @@ jobs:
       run: |
         swift package generate-xcodeproj
         xcodebuild test -scheme AXSnapshot-Package -sdk iphonesimulator -destination "OS=15.0,name=iPhone 13 Mini"
+  Lint:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: GitHub Action for SwiftLint
+        run: bash .github/runSwiftLint.sh
+  Format:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Github Action for Swiftformat
+        run: |
+          NUMBER_OF_CHANGES=$(make format 2>&1 | tail -1 | cut -d '/' -f1)
+          echo "number of lines diffs = $NUMBER_OF_CHANGES"
+          if [ $NUMBER_OF_CHANGES != 0 ]; then
+            echo "We expect number of line diffs to be zero"
+            echo "Please run `make format` and push the changes"
+            exit 1
+          fi

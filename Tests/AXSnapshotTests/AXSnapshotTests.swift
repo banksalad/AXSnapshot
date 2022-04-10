@@ -1,5 +1,5 @@
-import XCTest
 import AXSnapshot
+import XCTest
 
 final class AccessibilityDescriptionSnapshotTests: XCTestCase {
     func testSnapshotOfView() throws {
@@ -17,17 +17,16 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
             """
         )
     }
-    
-    
+
     @available(iOS 13, *)
     func testSnapshotOfViewController() throws {
         let viewController = UIViewController()
         let scrollView = UIScrollView()
         viewController.view.addSubview(scrollView)
-        
+
         let innerStackView = UIStackView()
         scrollView.addSubview(innerStackView)
-        
+
         let header = ListItemView()
         header.accessibilityTraits = [.header, .button]
         header.leftText = "Final Result"
@@ -36,19 +35,19 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
             print("Retry!")
             return true
         })]
-        
+
         let firstItem = ListItemView()
         firstItem.leftText = "The question is"
         firstItem.rightText = "The answer to the Life, the Universe, and Everything"
-        
+
         let secondItem = ListItemView()
         secondItem.leftText = "The answer is"
         secondItem.rightText = "42"
-        
+
         innerStackView.addArrangedSubview(header)
         innerStackView.addArrangedSubview(firstItem)
         innerStackView.addArrangedSubview(secondItem)
-        
+
         XCTAssert(scrollView.exposedAccessibleViews().count == 3)
         XCTAssert(
             viewController.axSnapshot() == """
@@ -67,18 +66,17 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
             """
         )
     }
-    
-    func testUnRespondableItem() throws {
 
+    func testUnRespondableItem() throws {
         let childAccessibleElement = UIButton()
         childAccessibleElement.isAccessibilityElement = true
         childAccessibleElement.setTitle("Submit", for: .normal)
-        
+
         let parentAccessibleElement = UIView()
         parentAccessibleElement.addSubview(childAccessibleElement)
         parentAccessibleElement.isAccessibilityElement = true
         parentAccessibleElement.accessibilityLabel = childAccessibleElement.accessibilityLabel
-        
+
         XCTAssert(childAccessibleElement.exposedAccessibleViews().isEmpty)
         XCTAssert(
             childAccessibleElement.axSnapshot().isEmpty,
@@ -115,10 +113,10 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
 
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.startAnimating()
-        
+
         let textField = UITextField()
         textField.text = "My TextField Content"
-        
+
         let textView = UITextView()
         textView.text = "My TextView Content"
 
@@ -204,36 +202,37 @@ class ListItemView: UIView {
     var leftText = "" {
         didSet { leftLabel.text = leftText }
     }
+
     var rightText = "" {
         didSet { rightLabel.text = rightText }
     }
-    
+
     private var stackView = UIStackView()
     var leftLabel = UILabel()
     var rightLabel = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(stackView)
-        
+
         stackView.addArrangedSubview(leftLabel)
         stackView.addArrangedSubview(rightLabel)
-        
-        self.isAccessibilityElement = true
-        self.accessibilityTraits = [.button]
+
+        isAccessibilityElement = true
+        accessibilityTraits = [.button]
     }
-    
+
     override var accessibilityLabel: String? {
         get { leftText }
-        set { }
+        set {}
     }
-    
+
     override var accessibilityValue: String? {
         get { rightText }
-        set { }
+        set {}
     }
-    
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

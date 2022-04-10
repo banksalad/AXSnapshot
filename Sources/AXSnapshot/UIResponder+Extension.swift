@@ -21,7 +21,8 @@ extension UIResponder {
         }
     }
 
-    /// A boolean value indicates that the elment is exposed to AssistiveTechnology even if `isAccessibilityElement` is false
+    /// A boolean value indicates that the elment is exposed to AssistiveTechnology
+    /// even if `isAccessibilityElement` is false
     ///
     /// Standard UIKit Controlst are not exposed to AssistiveTechnology when its `hidden` value is true
     /// - Date: 2022. 04. 02

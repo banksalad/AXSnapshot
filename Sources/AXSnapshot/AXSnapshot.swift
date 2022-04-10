@@ -3,11 +3,10 @@ import UIKit
 public extension UIView {
     /// Generate text-formatted snapshot of accessibility experience
     func axSnapshot() -> String {
-
         let descriptions = exposedAccessibleViews().map { element in
             element.accessibilityDescription
         }
-        
+
         if descriptions.isEmpty {
             return ""
         } else {
@@ -18,7 +17,7 @@ public extension UIView {
             return description
         }
     }
-    
+
     /// List of all subviews that are accessible via assistive technology such as VoiceOver
     func exposedAccessibleViews() -> [UIView] {
         var allCandidate = allSubviews
