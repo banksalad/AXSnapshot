@@ -11,7 +11,9 @@ import UIKit
 extension UIResponder {
     var isExposedToAssistiveTech: Bool {
         if shouldForceExposeToAssistiveTech || isAccessibilityElement {
-            if allItemsInResponderChain.contains(where: { $0.isExposedToAssistiveTech }) == true {
+            if hasBlockingElementInResponderChain {
+                return false
+            } else if (self as? UIView)?.isHidden == true {
                 return false
             } else {
                 return true
@@ -19,6 +21,12 @@ extension UIResponder {
         } else {
             return false
         }
+    }
+
+    private var hasBlockingElementInResponderChain: Bool {
+        allItemsInResponderChain.contains(where: { item in
+            item.isExposedToAssistiveTech || (item as? UIView)?.isHidden == true
+        })
     }
 
     /// A boolean value indicates that the elment is exposed to AssistiveTechnology
