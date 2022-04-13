@@ -93,6 +93,7 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
 
         let button = UIButton()
         button.setTitle("MyButton", for: .normal)
+        // Hidden Button shouldn't be exposed to axSnapshot
         button.isHidden = true
 
         let firstListItem = ListItemView()
@@ -102,6 +103,7 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
 
         childStackView.addArrangedSubview(firstListItem)
         childStackView.addArrangedSubview(secondListItem)
+        // all subviews of childStackview shouldn't be exposed to axSnapshot
         childStackView.isHidden = true
 
         parentStackView.addArrangedSubview(label)
