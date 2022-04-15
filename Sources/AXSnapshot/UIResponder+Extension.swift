@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension UIResponder {
+    @objc
     var isExposedToAssistiveTech: Bool {
         if shouldForceExposeToAssistiveTech || isAccessibilityElement {
             if allItemsInResponderChain.contains(where: { $0.isExposedToAssistiveTech }) == true {
@@ -19,6 +20,12 @@ extension UIResponder {
         } else {
             return false
         }
+    }
+
+    private var hasBlockingElementInResponderChain: Bool {
+        allItemsInResponderChain.contains(where: { item in
+            item.isExposedToAssistiveTech || (item as? UIView)?.isHidden == true
+        })
     }
 
     /// A boolean value indicates that the elment is exposed to AssistiveTechnology
@@ -56,5 +63,17 @@ extension UIResponder {
             nextResponder = nextResponder?.next
         }
         return chain
+    }
+}
+
+extension UIView {
+    @objc override var isExposedToAssistiveTech: Bool {
+        if isHidden {
+            return false
+        } else if allItemsInResponderChain.compactMap({ $0 as? UIView }).contains(where: { $0.isHidden }) {
+            return false
+        } else {
+            return super.isExposedToAssistiveTech
+        }
     }
 }

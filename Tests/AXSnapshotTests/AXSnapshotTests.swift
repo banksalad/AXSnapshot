@@ -84,6 +84,42 @@ final class AccessibilityDescriptionSnapshotTests: XCTestCase {
         )
     }
 
+    func testHiddenViews() throws {
+        let parentStackView = UIStackView()
+        let childStackView = UIStackView()
+
+        let label = UILabel()
+        label.text = "MyLabel"
+
+        let button = UIButton()
+        button.setTitle("MyButton", for: .normal)
+        // Hidden Button shouldn't be exposed to axSnapshot
+        button.isHidden = true
+
+        let firstListItem = ListItemView()
+        firstListItem.leftText = "FirstListItem"
+        let secondListItem = ListItemView()
+        secondListItem.leftText = "SecondListItem"
+
+        childStackView.addArrangedSubview(firstListItem)
+        childStackView.addArrangedSubview(secondListItem)
+        // all subviews of childStackview shouldn't be exposed to axSnapshot
+        childStackView.isHidden = true
+
+        parentStackView.addArrangedSubview(label)
+        parentStackView.addArrangedSubview(button)
+        parentStackView.addArrangedSubview(childStackView)
+
+        XCTAssert(
+            parentStackView.axSnapshot() == """
+            ------------------------------------------------------------
+            MyLabel
+            ------------------------------------------------------------
+            """,
+            "Hidden Views and Views with hidden superViews are not exposed to AssistiveTechnology"
+        )
+    }
+
     func testStandardUIKitControls() throws {
         // Given
         let containerView = UIView()
