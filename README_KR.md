@@ -51,7 +51,7 @@ SwiftPM을 쓰고 계신다면, `AXSnapshot`을 Package.swift의 `dependencies`�
 dependencies: [
   .package(
     url: "https://github.com/banksalad/AXSnapshot.git",
-    from: "1.0.0"
+    from: "1.0.2"
   ),
 ]
 ```
