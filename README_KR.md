@@ -39,7 +39,7 @@ Cocoapods을 사용하신다면, Podfile에서 원하시는 테스트 타겟 아
 
 ```ruby
 target 'MyAppTests' do
-  pod 'AXSnapshot', '~> 1.0.0'
+  pod 'AXSnapshot'
 end
 ```
 
