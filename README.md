@@ -41,7 +41,7 @@ If your project uses CocoaPods, add the pod to any applicable test targets in yo
 
 ```ruby
 target 'MyAppTests' do
-  pod 'AXSnapshot', '~> 1.0.0'
+  pod 'AXSnapshot'
 end
 ```
 
