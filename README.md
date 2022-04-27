@@ -53,7 +53,7 @@ If you want to use AXSnapshot in any other project that uses SwiftPM, add the pa
 dependencies: [
   .package(
     url: "https://github.com/banksalad/AXSnapshot.git",
-    from: "1.0.0"
+    from: "1.0.2"
   ),
 ]
 ```
